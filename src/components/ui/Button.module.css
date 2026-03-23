@@ -1,0 +1,37 @@
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  border-radius: var(--radius);
+  font-weight: 500;
+  transition: background 0.15s, opacity 0.15s;
+}
+
+.btn:disabled { opacity: 0.5; cursor: not-allowed; }
+
+/* Variants */
+.primary  { background: var(--accent); color: #fff; }
+.primary:hover:not(:disabled) { background: var(--accent-hover); }
+
+.ghost    { background: transparent; color: var(--text-secondary); border: 1px solid var(--border); }
+.ghost:hover:not(:disabled) { border-color: var(--accent); color: var(--accent); }
+
+.danger   { background: var(--danger); color: #fff; }
+.success  { background: var(--success); color: #fff; }
+
+/* Sizes */
+.sm { padding: 6px 12px; font-size: 13px; }
+.md { padding: 10px 18px; font-size: 14px; }
+.lg { padding: 13px 24px; font-size: 15px; }
+
+/* Spinner */
+.spinner {
+  width: 16px; height: 16px;
+  border: 2px solid rgba(255,255,255,0.3);
+  border-top-color: #fff;
+  border-radius: 50%;
+  animation: spin 0.6s linear infinite;
+}
+
+@keyframes spin { to { transform: rotate(360deg); } }
