@@ -4,7 +4,7 @@ import { chequeService } from '@/services/chequeService'
 export const uploadCheque = createAsyncThunk('cheques/upload', async (formData, { rejectWithValue }) => {
   try {
     const { data } = await chequeService.upload(formData)
-    return data.cheque
+    return data.data.cheque
   } catch (err) {
     return rejectWithValue(err.response?.data?.message || 'Upload failed')
   }
@@ -13,7 +13,7 @@ export const uploadCheque = createAsyncThunk('cheques/upload', async (formData, 
 export const fetchCheques = createAsyncThunk('cheques/fetchAll', async (params, { rejectWithValue }) => {
   try {
     const { data } = await chequeService.getAll(params)
-    return data
+    return data.data
   } catch (err) {
     return rejectWithValue(err.response?.data?.message)
   }
@@ -22,7 +22,7 @@ export const fetchCheques = createAsyncThunk('cheques/fetchAll', async (params, 
 export const fetchChequeById = createAsyncThunk('cheques/fetchById', async (id, { rejectWithValue }) => {
   try {
     const { data } = await chequeService.getById(id)
-    return data.cheque
+    return data.data.cheque
   } catch (err) {
     return rejectWithValue(err.response?.data?.message)
   }
@@ -31,7 +31,7 @@ export const fetchChequeById = createAsyncThunk('cheques/fetchById', async (id, 
 export const verifyCheque = createAsyncThunk('cheques/verify', async ({ id, payload }, { rejectWithValue }) => {
   try {
     const { data } = await chequeService.verify(id, payload)
-    return data.cheque
+    return data.data.cheque
   } catch (err) {
     return rejectWithValue(err.response?.data?.message)
   }
@@ -40,7 +40,7 @@ export const verifyCheque = createAsyncThunk('cheques/verify', async ({ id, payl
 export const rejectCheque = createAsyncThunk('cheques/reject', async ({ id, reason }, { rejectWithValue }) => {
   try {
     const { data } = await chequeService.reject(id, reason)
-    return data.cheque
+    return data.data.cheque
   } catch (err) {
     return rejectWithValue(err.response?.data?.message)
   }

@@ -2,7 +2,8 @@ import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
 import { Toaster } from 'react-hot-toast'
 import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { fetchMe } from '@/store/slices/authSlice'
+import { fetchMe, clearAuth } from '@/store/slices/authSlice'
+import { tokenService } from '@/services/tokenService'
 
 import { AppLayout } from '@/components/layout/AppLayout'
 import { Login }      from '@/pages/Login'
@@ -30,11 +31,10 @@ export default function App() {
   const dispatch = useDispatch()
 
   useEffect(() => {
-    // Rehydrate user from token on hard refresh
-    if (localStorage.getItem('token')) {
+    if (tokenService.has()) {
       dispatch(fetchMe())
     } else {
-      dispatch({ type: 'auth/fetchMe/rejected' }) // mark initialized
+      dispatch(clearAuth())
     }
   }, [dispatch])
 

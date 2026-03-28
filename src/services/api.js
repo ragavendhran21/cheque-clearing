@@ -1,25 +1,30 @@
 import axios from 'axios'
 import { API_BASE_URL } from '@/constants'
+import { tokenService } from '@/services/tokenService'
 
 const api = axios.create({
   baseURL: API_BASE_URL,
   timeout: 30000,
+  headers: { 'Content-Type': 'application/json' },
 })
 
-// Attach token on every request
-api.interceptors.request.use((config) => {
-  const token = localStorage.getItem('token')
-  if (token) config.headers.Authorization = `Bearer ${token}`
-  return config
-})
+api.interceptors.request.use(
+  (config) => {
+    const token = tokenService.get()
+    if (token) config.headers.Authorization = `Bearer ${token}`
+    return config
+  },
+  (err) => Promise.reject(err)
+)
 
-// Handle 401 globally
 api.interceptors.response.use(
   (res) => res,
   (err) => {
     if (err.response?.status === 401) {
-      localStorage.removeItem('token')
-      window.location.href = '/login'
+      tokenService.remove()
+      if (window.location.pathname !== '/login') {
+        window.location.replace('/login')
+      }
     }
     return Promise.reject(err)
   }
