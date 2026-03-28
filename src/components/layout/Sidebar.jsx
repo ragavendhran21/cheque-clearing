@@ -1,16 +1,22 @@
 import { NavLink } from 'react-router-dom'
-import { LayoutDashboard, FileCheck, Upload, LogOut } from 'lucide-react'
+import { LayoutDashboard, FileCheck, Upload, LogOut, Settings2, Users } from 'lucide-react'
 import { useAuth } from '@/hooks/useAuth'
 import styles from './Sidebar.module.css'
 
-const NAV = [
-  { to: '/dashboard',        label: 'Dashboard',  icon: LayoutDashboard },
-  { to: '/cheques',          label: 'Cheques',    icon: FileCheck },
-  { to: '/cheques/upload',   label: 'Upload',     icon: Upload },
+const NAV_MAIN = [
+  { to: '/dashboard',      label: 'Dashboard', icon: LayoutDashboard },
+  { to: '/cheques',        label: 'Cheques',   icon: FileCheck },
+  { to: '/cheques/upload', label: 'Upload',    icon: Upload },
+]
+
+const NAV_CONFIG = [
+  { to: '/business-rules', label: 'Setup Bank Rules', icon: Settings2, roles: null },
+  { to: '/setup-user',     label: 'Setup User',       icon: Users,     roles: ['admin'] },
 ]
 
 export function Sidebar() {
   const { user, logout } = useAuth()
+  const role = user?.role
 
   return (
     <aside className={styles.sidebar}>
@@ -20,7 +26,7 @@ export function Sidebar() {
       </div>
 
       <nav className={styles.nav}>
-        {NAV.map(({ to, label, icon: Icon }) => (
+        {NAV_MAIN.map(({ to, label, icon: Icon }) => (
           <NavLink
             key={to}
             to={to}
@@ -30,6 +36,21 @@ export function Sidebar() {
             <span>{label}</span>
           </NavLink>
         ))}
+
+        <div className={styles.navSection}>Configuration</div>
+
+        {NAV_CONFIG
+          .filter(({ roles }) => !roles || roles.includes(role))
+          .map(({ to, label, icon: Icon }) => (
+            <NavLink
+              key={to}
+              to={to}
+              className={({ isActive }) => `${styles.link} ${isActive ? styles.active : ''}`}
+            >
+              <Icon size={18} />
+              <span>{label}</span>
+            </NavLink>
+          ))}
       </nav>
 
       <div className={styles.footer}>

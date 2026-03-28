@@ -43,6 +43,15 @@
   padding: 20px 10px;
 }
 
+.navSection {
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+  color: var(--text-muted);
+  padding: 14px 12px 4px;
+}
+
 .link {
   display: flex;
   align-items: center;

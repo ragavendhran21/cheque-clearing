@@ -16,6 +16,14 @@ export const ENDPOINTS = {
 
   // Dashboard
   STATS:            '/dashboard/stats',
+
+  // Business Rules
+  BR_SCHEMA: (table) => `/business-rules/${table}/schema`,
+  BR_ROWS:   (table) => `/business-rules/${table}`,
+
+  // Users
+  USERS:        '/users',
+  USER:         (id) => `/users/${id}`,
 }
 
 export const CHEQUE_STATUS = {

@@ -11,7 +11,9 @@ import { Signup }     from '@/pages/Signup'
 import { Dashboard }  from '@/pages/Dashboard'
 import { ChequeList }   from '@/pages/ChequeList'
 import { ChequeUpload } from '@/pages/ChequeUpload'
-import { ChequeDetail } from '@/pages/ChequeDetail'
+import { ChequeDetail }   from '@/pages/ChequeDetail'
+import { BusinessRules }  from '@/pages/BusinessRules'
+import { SetupUser }      from '@/pages/SetupUser'
 
 function ProtectedRoute({ children }) {
   const { user, initialized } = useSelector((s) => s.auth)
@@ -24,6 +26,14 @@ function GuestRoute({ children }) {
   const { user, initialized } = useSelector((s) => s.auth)
   if (!initialized) return null
   if (user) return <Navigate to="/dashboard" replace />
+  return children
+}
+
+function AdminRoute({ children }) {
+  const { user, initialized } = useSelector((s) => s.auth)
+  if (!initialized) return null
+  if (!user) return <Navigate to="/login" replace />
+  if (user.role !== 'admin') return <Navigate to="/dashboard" replace />
   return children
 }
 
@@ -55,6 +65,8 @@ export default function App() {
           <Route path="/cheques"          element={<ChequeList />} />
           <Route path="/cheques/upload"   element={<ChequeUpload />} />
           <Route path="/cheques/:id"      element={<ChequeDetail />} />
+          <Route path="/business-rules"   element={<BusinessRules />} />
+          <Route path="/setup-user"       element={<AdminRoute><SetupUser /></AdminRoute>} />
         </Route>
 
         {/* Fallback */}
