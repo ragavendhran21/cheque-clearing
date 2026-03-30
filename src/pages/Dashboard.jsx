@@ -32,7 +32,7 @@ const MOCK_WORK_TYPES = [
 
 const STATUS_META = {
   pending:    { label: 'Pending',    color: 'var(--warning)', bg: 'rgba(245,158,11,0.12)' },
-  processing: { label: 'Processing', color: 'var(--accent)',  bg: 'rgba(59,130,246,0.12)' },
+  processing: { label: 'Processing', color: 'var(--accent)',  bg: 'rgba(201,168,76,0.12)' },
   verified:   { label: 'Verified',   color: 'var(--success)', bg: 'rgba(16,185,129,0.12)' },
   rejected:   { label: 'Rejected',   color: 'var(--danger)',  bg: 'rgba(239,68,68,0.12)'  },
   flagged:    { label: 'Flagged',    color: '#f97316',        bg: 'rgba(249,115,22,0.12)' },
@@ -41,7 +41,7 @@ const STATUS_META = {
 const STAT_CARDS = [
   { key: 'totalCheques', label: 'Total Cheques',  icon: FileCheck2,    color: 'var(--accent)'   },
   { key: 'pending',      label: 'Pending',         icon: Clock,         color: 'var(--warning)'  },
-  { key: 'processing',   label: 'Processing',      icon: Activity,      color: 'var(--accent)'   },
+  { key: 'processing',   label: 'Processing',      icon: Activity,      color: 'var(--accent)'   },,
   { key: 'verified',     label: 'Verified',        icon: CheckCircle2,  color: 'var(--success)'  },
   { key: 'rejected',     label: 'Rejected',        icon: XCircle,       color: 'var(--danger)'   },
   { key: 'flagged',      label: 'Flagged',         icon: AlertTriangle, color: '#f97316'         },

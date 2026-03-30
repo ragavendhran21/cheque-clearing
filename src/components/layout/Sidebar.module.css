@@ -1,38 +1,51 @@
 .sidebar {
-  width: 230px;
+  width: 240px;
   min-height: 100vh;
   background: var(--bg-secondary);
   border-right: 1px solid var(--border);
   display: flex;
   flex-direction: column;
-  padding: 24px 0;
+  padding: 0;
   flex-shrink: 0;
+  position: relative;
+}
+
+/* Subtle gold line on right edge */
+.sidebar::after {
+  content: '';
+  position: absolute;
+  right: 0; top: 15%; bottom: 15%;
+  width: 1px;
+  background: linear-gradient(180deg, transparent, var(--accent), transparent);
+  opacity: 0.3;
 }
 
 .logo {
   display: flex;
   align-items: center;
-  gap: 10px;
-  padding: 0 20px 28px;
+  gap: 12px;
+  padding: 24px 20px 22px;
   border-bottom: 1px solid var(--border);
 }
 
 .logoMark {
-  width: 34px; height: 34px;
+  width: 36px; height: 36px;
   background: var(--accent);
-  border-radius: 8px;
+  border-radius: 9px;
   display: flex;
   align-items: center;
   justify-content: center;
   font-weight: 800;
   font-size: 14px;
-  color: #fff;
+  color: var(--bg-secondary);
+  flex-shrink: 0;
 }
 
 .logoText {
-  font-size: 18px;
+  font-size: 17px;
   font-weight: 700;
-  letter-spacing: -0.5px;
+  letter-spacing: -0.4px;
+  color: var(--text-primary);
 }
 
 .nav {
@@ -40,16 +53,16 @@
   display: flex;
   flex-direction: column;
   gap: 2px;
-  padding: 20px 10px;
+  padding: 18px 10px;
 }
 
 .navSection {
   font-size: 10px;
   font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: 0.6px;
+  letter-spacing: 0.8px;
   color: var(--text-muted);
-  padding: 14px 12px 4px;
+  padding: 14px 12px 5px;
 }
 
 .link {
@@ -64,19 +77,32 @@
   transition: all 0.15s;
 }
 
-.link:hover { background: var(--bg-card); color: var(--text-primary); }
-.active     { background: var(--bg-card); color: var(--accent); }
+.link:hover {
+  background: var(--surface-hover);
+  color: var(--text-primary);
+}
+
+.active {
+  background: var(--accent-light);
+  color: var(--accent);
+  font-weight: 600;
+}
+
+.active:hover {
+  background: var(--accent-light);
+  color: var(--accent);
+}
 
 .footer {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 16px 16px 0;
+  padding: 14px 16px;
   border-top: 1px solid var(--border);
   margin-top: auto;
 }
 
-.user   { display: flex; align-items: center; gap: 10px; }
+.user { display: flex; align-items: center; gap: 10px; }
 
 .avatar {
   width: 32px; height: 32px;
@@ -87,10 +113,11 @@
   justify-content: center;
   font-weight: 700;
   font-size: 13px;
-  color: #fff;
+  color: var(--bg-secondary);
+  flex-shrink: 0;
 }
 
-.userName { font-size: 13px; font-weight: 600; }
+.userName { font-size: 13px; font-weight: 600; color: var(--text-primary); }
 .userRole { font-size: 11px; color: var(--text-muted); text-transform: capitalize; }
 
 .logout {
@@ -99,7 +126,7 @@
   padding: 6px;
   border-radius: 6px;
   display: flex;
-  transition: color 0.15s;
+  transition: color 0.15s, background 0.15s;
 }
 
-.logout:hover { color: var(--danger); }
+.logout:hover { color: var(--danger); background: rgba(239,68,68,0.08); }

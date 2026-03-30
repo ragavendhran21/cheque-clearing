@@ -5,6 +5,18 @@
   justify-content: center;
   background: var(--bg-primary);
   padding: 24px;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Decorative gold orb */
+.page::before {
+  content: '';
+  position: absolute;
+  width: 600px; height: 600px;
+  background: radial-gradient(circle, rgba(201,168,76,0.06) 0%, transparent 70%);
+  top: -200px; right: -200px;
+  pointer-events: none;
 }
 
 .card {
@@ -12,34 +24,46 @@
   max-width: 420px;
   background: var(--bg-secondary);
   border: 1px solid var(--border);
-  border-radius: 16px;
-  padding: 40px 36px;
+  border-radius: 18px;
+  padding: 44px 40px;
+  position: relative;
+}
+
+/* Gold top accent line */
+.card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 10%; right: 10%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--accent), transparent);
+  border-radius: 0 0 2px 2px;
 }
 
 .brand {
   display: flex;
   align-items: center;
-  gap: 10px;
-  margin-bottom: 32px;
+  gap: 12px;
+  margin-bottom: 36px;
 }
 
 .logoMark {
-  width: 36px;
-  height: 36px;
+  width: 40px; height: 40px;
   background: var(--accent);
-  border-radius: 8px;
+  border-radius: 10px;
   display: flex;
   align-items: center;
   justify-content: center;
   font-weight: 800;
-  font-size: 14px;
-  color: #fff;
+  font-size: 15px;
+  color: var(--bg-secondary);
+  flex-shrink: 0;
 }
 
 .logoText {
   font-size: 20px;
   font-weight: 700;
   letter-spacing: -0.5px;
+  color: var(--text-primary);
 }
 
 .heading {
@@ -47,95 +71,92 @@
   font-weight: 700;
   letter-spacing: -0.5px;
   margin-bottom: 6px;
+  color: var(--text-primary);
 }
 
 .sub {
   color: var(--text-secondary);
   font-size: 14px;
-  margin-bottom: 28px;
+  margin-bottom: 32px;
 }
 
 .form {
   display: flex;
   flex-direction: column;
-  gap: 18px;
+  gap: 20px;
 }
 
 .field {
   display: flex;
   flex-direction: column;
-  gap: 6px;
+  gap: 7px;
 }
 
 .field label {
   font-size: 13px;
-  font-weight: 500;
+  font-weight: 600;
   color: var(--text-secondary);
+  letter-spacing: 0.3px;
 }
 
 .field input {
   background: var(--bg-card);
   border: 1px solid var(--border);
   border-radius: var(--radius);
-  padding: 10px 14px;
+  padding: 11px 14px;
   color: var(--text-primary);
   font-size: 14px;
-  transition: border-color 0.15s;
+  transition: border-color 0.15s, box-shadow 0.15s;
 }
 
 .field input:focus {
   border-color: var(--accent);
+  box-shadow: 0 0 0 3px var(--accent-light);
 }
 
-.field input::placeholder {
-  color: var(--text-muted);
-}
+.field input::placeholder { color: var(--text-muted); }
 
 .error {
   font-size: 13px;
   color: var(--danger);
-  background: rgba(239, 68, 68, 0.08);
-  border: 1px solid rgba(239, 68, 68, 0.2);
+  background: rgba(239,68,68,0.08);
+  border: 1px solid rgba(239,68,68,0.25);
   border-radius: 8px;
   padding: 10px 14px;
 }
 
 .submitBtn {
   width: 100%;
-  padding: 12px;
+  padding: 13px;
   background: var(--accent);
-  color: #fff;
+  color: var(--bg-secondary);
   border-radius: var(--radius);
   font-size: 15px;
-  font-weight: 600;
-  transition: background 0.15s, opacity 0.15s;
+  font-weight: 700;
+  letter-spacing: 0.2px;
+  transition: background 0.15s, opacity 0.15s, transform 0.1s;
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-top: 4px;
+  margin-top: 6px;
 }
 
 .submitBtn:hover:not(:disabled) {
   background: var(--accent-hover);
+  transform: translateY(-1px);
 }
 
-.submitBtn:disabled {
-  opacity: 0.6;
-  cursor: not-allowed;
-}
+.submitBtn:disabled { opacity: 0.6; cursor: not-allowed; }
 
 .spinner {
-  width: 18px;
-  height: 18px;
-  border: 2px solid rgba(255, 255, 255, 0.3);
-  border-top-color: #fff;
+  width: 18px; height: 18px;
+  border: 2px solid rgba(11,31,75,0.3);
+  border-top-color: var(--bg-secondary);
   border-radius: 50%;
   animation: spin 0.6s linear infinite;
 }
 
-@keyframes spin {
-  to { transform: rotate(360deg); }
-}
+@keyframes spin { to { transform: rotate(360deg); } }
 
 .footer {
   text-align: center;
@@ -146,9 +167,7 @@
 
 .footer a {
   color: var(--accent);
-  font-weight: 500;
+  font-weight: 600;
 }
 
-.footer a:hover {
-  text-decoration: underline;
-}
+.footer a:hover { text-decoration: underline; }
