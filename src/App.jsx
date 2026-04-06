@@ -52,7 +52,7 @@ export default function App() {
     <BrowserRouter>
       <Toaster
         position="top-right"
-        toastOptions={{ style: { background: '#1a2235', color: '#f1f5f9', border: '1px solid #1e2d45' } }}
+        toastOptions={{ style: { background: '#0F2660', color: '#F0F4FF', border: '1px solid #1A3A7C' } }}
       />
       <Routes>
         {/* Guest only */}

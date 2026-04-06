@@ -20,7 +20,7 @@
   padding: 4px 0;
   transition: color 0.15s;
 }
-.back:hover { color: var(--text-primary); }
+.back:hover { color: var(--accent); }
 
 .title    { font-size: 22px; font-weight: 700; letter-spacing: -0.5px; }
 .subtitle { font-size: 13px; color: var(--text-secondary); margin-top: 4px; }
@@ -50,7 +50,14 @@
   flex-direction: column;
   gap: 16px;
 }
-.infoTitle { font-size: 13px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; color: var(--text-muted); }
+
+.infoTitle {
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.7px;
+  color: var(--accent);
+}
 
 .tips { display: flex; flex-direction: column; gap: 12px; list-style: none; }
 .tip  { display: flex; align-items: flex-start; gap: 10px; font-size: 13px; color: var(--text-secondary); line-height: 1.5; }
@@ -66,11 +73,11 @@
   font-size: 13px;
   color: var(--text-secondary);
 }
+
 .stepNum {
-  width: 22px;
-  height: 22px;
+  width: 22px; height: 22px;
   border-radius: 50%;
-  background: rgba(59,130,246,0.15);
+  background: var(--accent-light);
   color: var(--accent);
   font-size: 11px;
   font-weight: 700;

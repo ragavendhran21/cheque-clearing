@@ -19,7 +19,7 @@ const STATUS_FILTERS = ['all', 'pending', 'processing', 'verified', 'rejected', 
 
 const STATUS_META = {
   pending:    { label: 'Pending',    color: 'var(--warning)', bg: 'rgba(245,158,11,0.12)' },
-  processing: { label: 'Processing', color: 'var(--accent)',  bg: 'rgba(59,130,246,0.12)' },
+  processing: { label: 'Processing', color: 'var(--accent)',  bg: 'rgba(201,168,76,0.12)' },
   verified:   { label: 'Verified',   color: 'var(--success)', bg: 'rgba(16,185,129,0.12)' },
   rejected:   { label: 'Rejected',   color: 'var(--danger)',  bg: 'rgba(239,68,68,0.12)'  },
   flagged:    { label: 'Flagged',    color: '#f97316',        bg: 'rgba(249,115,22,0.12)' },
